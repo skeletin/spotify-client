@@ -1,0 +1,11 @@
+Model Information:
+* title:	Spotify Logo
+* source:	https://sketchfab.com/3d-models/spotify-logo-090826d4a192443c89453cf256b9270e
+* author:	leesokleng (https://sketchfab.com/leesokleng)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Spotify Logo" (https://sketchfab.com/3d-models/spotify-logo-090826d4a192443c89453cf256b9270e) by leesokleng (https://sketchfab.com/leesokleng) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

@@ -62,6 +62,9 @@ const Home = ({ position = [0, 0.1, 3.8], fov = 33 }) => {
 };
 
 function HeroOverlay() {
+  const loginIntoSpotify = () => {
+    window.location.assign("/login");
+  };
   return (
     <div className="pointer-events-none absolute inset-0 z-20 flex items-center">
       <div className="pointer-events-auto ml-[6vw] flex w-[46vw] max-w-[680px] min-w-[320px] flex-col gap-6 text-white">
@@ -94,12 +97,14 @@ function HeroOverlay() {
         </h1>
 
         <div>
-          <button
-            type="button"
-            className="rounded-md border border-emerald-100/30 bg-black/35 px-7 py-3 text-sm font-semibold uppercase tracking-[0.18em] text-white backdrop-blur-sm transition hover:border-emerald-200/50 hover:bg-black/50 cursor-pointer"
-          >
-            Login
-          </button>
+          <form method="get" action="/login">
+            <button
+              type="submit"
+              className="rounded-md border border-emerald-100/30 bg-black/35 px-7 py-3 text-sm font-semibold uppercase tracking-[0.18em] text-white backdrop-blur-sm transition hover:border-emerald-200/50 hover:bg-black/50 cursor-pointer"
+            >
+              Login
+            </button>
+          </form>
         </div>
       </div>
     </div>

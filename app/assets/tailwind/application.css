@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+/* Spotify guideline: default sans-serif; Helvetica Neue, Helvetica, Arial */
+html {
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
 html,
 body,
 main,

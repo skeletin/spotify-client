@@ -1,0 +1,22 @@
+<article class="group flex w-full items-center gap-4 rounded-xl border border-white/10 bg-[#191414]/90 p-3.5 text-slate-200 transition hover:border-[#1db954]/40 hover:bg-[#191414] md:p-4">
+  <%= link_to @spotify_url.presence || "https://open.spotify.com", { target: "_blank", rel: "noopener noreferrer", class: "flex min-w-0 flex-1 items-center gap-4 no-underline text-inherit" } do %>
+    <%= render SpotifyArtworkComponent.new(image_url: @image_url, size: :medium, alt: @name) %>
+
+    <div class="min-w-0 flex-1">
+      <%# Metadata: legible, truncate when limited; ~25 chars for playlist name %>
+      <p class="truncate text-sm font-semibold text-white md:text-base" title="<%= @name %>"><%= @name %></p>
+      <div class="mt-1 flex items-center gap-2 text-[11px] uppercase tracking-[0.12em] text-slate-300/75">
+        <span>Playlist</span>
+        <span class="text-[#1db954]/80">•</span>
+        <span class="truncate" title="<%= @owner %>"><%= @owner %></span>
+      </div>
+    </div>
+
+    <div class="hidden shrink-0 items-center gap-2 md:flex">
+      <% if @spotify_url.present? %>
+        <span class="text-[10px] font-semibold uppercase tracking-wider text-[#1db954] opacity-0 transition group-hover:opacity-100">Open in Spotify</span>
+      <% end %>
+      <span class="h-2 w-2 rounded-full bg-transparent transition group-hover:bg-[#1db954] group-hover:shadow-[0_0_10px_rgba(29,185,84,0.8)]"></span>
+    </div>
+  <% end %>
+</article>

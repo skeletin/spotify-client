@@ -1,0 +1,75 @@
+<div
+  data-controller="spotify-player"
+  data-spotify-player-token-value="<%= helpers.get_access_token.to_s %>"
+  data-spotify-player-scopes-value="<%= helpers.spotify_granted_scopes %>"
+  class="w-full rounded-2xl border border-white/10 bg-[#191414] p-3 shadow-xl md:p-4"
+>
+  <div class="grid items-center gap-3 md:gap-4 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.6fr)_minmax(0,1fr)]">
+    <%# Now playing: artwork (4px/8px radius, no overlay) + metadata per Spotify guidelines %>
+    <div class="min-w-0">
+      <div class="flex items-center gap-3 rounded-xl bg-[#282828]/80 p-2 md:p-2.5">
+        <div class="h-12 w-12 shrink-0 overflow-hidden rounded-[4px] bg-[#191414] lg:rounded-lg">
+          <img
+            data-spotify-player-target="artwork"
+            src=""
+            alt=""
+            class="h-full w-full object-contain hidden"
+          />
+          <div data-spotify-player-target="artworkPlaceholder" class="h-full w-full flex items-center justify-center bg-[#282828]">
+            <svg class="h-6 w-6 text-white/30" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
+            </svg>
+          </div>
+        </div>
+        <div class="min-w-0 flex-1">
+          <p data-spotify-player-target="trackName" class="truncate text-sm font-semibold text-white" title="">Nothing playing</p>
+          <p data-spotify-player-target="artist" class="truncate text-xs text-slate-300">Transfer playback from Spotify</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="min-w-0">
+      <div class="flex flex-wrap items-center justify-center gap-2 md:gap-3">
+        <button class="rounded-full border border-white/20 bg-white/5 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-wider text-white/90 transition hover:bg-white/10" data-action="click->spotify-player#activateElement">
+          Activate
+        </button>
+        <button data-spotify-player-target="transfer" class="rounded-full border border-white/20 bg-white/5 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-wider text-white/90 transition hover:bg-white/10 disabled:cursor-not-allowed disabled:opacity-50" data-action="click->spotify-player#transferPlayback" disabled>
+          Use This Device
+        </button>
+        <button data-spotify-player-target="toggle" class="rounded-full bg-[#1db954] px-5 py-2 text-[10px] font-bold uppercase tracking-wider text-black transition hover:bg-[#1ed760] disabled:cursor-not-allowed disabled:opacity-50" data-action="click->spotify-player#togglePlay" disabled>
+          Play
+        </button>
+      </div>
+
+      <%# Progress: information only — no seeking (Spotify guideline) %>
+      <div class="mt-2.5 flex items-center gap-2 md:gap-3" role="presentation" aria-label="Playback progress (display only)">
+        <span data-spotify-player-target="elapsed" class="w-9 text-right text-[10px] font-medium tabular-nums text-white/55">0:00</span>
+        <div class="h-1.5 flex-1 overflow-hidden rounded-full bg-white/10 pointer-events-none">
+          <div data-spotify-player-target="progress" class="h-full w-0 rounded-full bg-[#1db954] transition-[width] duration-300"></div>
+        </div>
+        <span data-spotify-player-target="duration" class="w-9 text-[10px] font-medium tabular-nums text-white/55">0:00</span>
+      </div>
+    </div>
+
+    <div class="min-w-0">
+      <div class="flex flex-col gap-2 lg:items-end">
+        <p data-spotify-player-target="status" class="text-xs text-slate-400">Loading player...</p>
+        <a data-spotify-player-target="spotifyLink" href="https://open.spotify.com" target="_blank" rel="noopener noreferrer" class="hidden text-[10px] font-semibold uppercase tracking-wider text-[#1db954] hover:underline lg:inline-block">Listen on Spotify</a>
+        <p class="text-[10px] uppercase tracking-[0.12em] text-slate-500">Device: <span data-spotify-player-target="device" class="text-slate-400">-</span></p>
+
+        <div class="flex w-full items-center gap-2 lg:w-44">
+          <span class="text-[10px] uppercase tracking-[0.12em] text-white/55">Vol</span>
+          <input
+            type="range"
+            min="0"
+            max="100"
+            value="50"
+            data-spotify-player-target="volume"
+            data-action="input->spotify-player#setVolume"
+            class="h-1.5 w-full cursor-pointer appearance-none rounded-full bg-white/15 accent-[#1db954]"
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

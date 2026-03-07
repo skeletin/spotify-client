@@ -1,0 +1,12 @@
+<%# Spotify guideline: artwork in original form, no crop, no overlay; 4px radius small/medium, 8px large %>
+<div class="<%= size_classes %> <%= radius_classes %> overflow-hidden bg-[#191414] shrink-0">
+  <% if @image_url.present? %>
+    <%= image_tag @image_url, alt: @alt, class: "h-full w-full object-contain" %>
+  <% else %>
+    <div class="h-full w-full flex items-center justify-center bg-[#282828]">
+      <svg class="h-1/2 w-1/2 text-white/30" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
+      </svg>
+    </div>
+  <% end %>
+</div>

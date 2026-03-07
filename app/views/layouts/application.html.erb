@@ -17,8 +17,23 @@
   </head>
 
   <body>
-    <main>
-      <%= yield %>
-    </main>
+
+    <% if current_page?(root_path) %>
+      <main>
+        <%= yield %>
+      </main>
+    <% else  %>
+      <main>
+        <div class="flex h-full w-full flex-col gap-4 bg-[#121212] p-4 md:p-8 font-sans">
+          <div class="flex flex-1 flex-col gap-4 lg:flex-row">
+              <%= render NavigationComponent.new %>
+              <div class="min-w-0 flex-1">
+                <%= yield %>
+              </div>
+          </div>
+          <%= render MusicPlayerComponent.new %>
+        </div>
+      </main>
+    <% end %>
   </body>
 </html>

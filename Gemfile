@@ -15,6 +15,7 @@ gem "image_processing", "~> 1.2"
 gem "tailwindcss-rails", "~> 4.4"
 gem "vite_rails"
 gem "view_component"
+gem 'faraday'
 
 group :development, :test do
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
@@ -33,3 +34,5 @@ group :test do
 end
 
 
+
+gem "heroicons-ruby", "~> 2.1"
